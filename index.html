@@ -158,67 +158,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-子查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h4><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>在一个表达中可以调用另一个表表达式，这个被调用的表达式叫做子查询（subquery），也称作子选择（subselect）或内嵌选择（inner select）。子查询的结果传递给调用它的表表达式继续处理。</p>
-<p> <strong>1、where型子查询</strong></p>
-<p>​                <strong>（把内层查询结果当作外层查询的比较条件）</strong></p>
-<p>​                #不用order by 来查询最新的商品</p>
-<p>​                select goods_id,goods_name from goods where goods_id = (select max(goods_id) from goods);</p>
-<p>​                #取出每个栏目下最新的产品(goods_id唯一)</p>
-<p>​                select cat_id,goods_id,goods_name from goods where goods_id in(select max(goods_id) from goods group by cat_id);</p>
-<p>​        <strong>2、from型子查询</strong></p>
-<p>​                <strong>(把内层的查询结果供外层再次查询)</strong></p>
-<p>​                #用子查询查出挂科两门及以上的同学的平均成绩</p>
-<p>​                    思路：</p>
-<p>​                        #先查出哪些同学挂科两门以上</p>
-<p>​                        select name,count(*) as gk from stu where score &lt; 60 having gk &gt;=2;</p>
-<p>​                        #以上查询结果，我们只要名字就可以了，所以再取一次名字</p>
-<p>​                        select name from (select name,count(*) as gk from stu having gk &gt;=2) as t;</p>
-<p>​                        #找出这些同学了，那么再计算他们的平均分</p>
-<p>​                        select name,avg(score) from stu where name in (select name from (select name,count(*) as gk from stu having gk &gt;=2) as t) group by name;</p>
-<p>​        <strong>3、exists型子查询</strong></p>
-<p>​                <strong>（把外层查询结果拿到内层，看内层的查询是否成立）</strong></p>
-<p>​                #查询哪些栏目下有商品，栏目表category,商品表goods</p>
-<p>​                    select cat_id,cat_name from category where exists(select * from goods where goods.cat_id = category.cat_id);</p>
-<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT of_dpt, COUNT(proj_name) AS count_project FROM project WHERE of_dpt IN (SELECT in_dpt FROM employee WHERE name=&apos;Tom&apos;)</div></pre></td></tr></table></figure>
-<h4 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h4><p> 分左连接，右连接，内连接</p>
-<p>1 左连接</p>
-<p>以左表为准，去右表找数据，如果没有匹配的数据，则以null补空位，所以输出结果数=左表原数据数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select goods_id,goods_name,goods.cat_id,cat_name,shop_price from goods left join category on goods.cat_id = category.cat_id order by  shop_price desc limit 5;</div></pre></td></tr></table></figure>
-<p>2 内连接</p>
-<p>查询结果是左右连接的<strong>交集</strong>，【即左右连接的结果去除null项后的并集（去除了重复项）】</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select n1,n2,n3 from ta inner join tb on ta.n1= ta.n2</div></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/22/子查询/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
     <article id="post-ruby-singleton-method" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -483,6 +422,93 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/06/21/python3-circlearea/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-子查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/21/子查询/">mysql-subquery</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/21/子查询/" class="archive-article-date">
+  	<time datetime="2017-06-21T06:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h2><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>在一个表达中可以调用另一个表达式，这个被调用的表达式叫做子查询（subquery），也称作子选择（subselect）或内嵌选择（inner select）。子查询的结果传递给调用它的表表达式继续处理。</p>
+<p> <strong>1、where型子查询</strong></p>
+<p>​                <strong>（把内层查询结果当作外层查询的比较条件）</strong></p>
+<p>​                #不用order by 来查询最新的商品</p>
+<p>​                select goods_id,goods_name from goods where goods_id = (select max(goods_id) from goods);</p>
+<p>​                #取出每个栏目下最新的产品(goods_id唯一)</p>
+<p>​                select cat_id,goods_id,goods_name from goods where goods_id in(select max(goods_id) from goods group by cat_id);</p>
+<p>​        <strong>2、from型子查询</strong></p>
+<p>​                <strong>(把内层的查询结果供外层再次查询)</strong></p>
+<p>​                #用子查询查出挂科两门及以上的同学的平均成绩</p>
+<p>​                    思路：</p>
+<p>​                        #先查出哪些同学挂科两门以上</p>
+<p>​                        select name,count(*) as gk from stu where score &lt; 60 having gk &gt;=2;</p>
+<p>​                        #以上查询结果，我们只要名字就可以了，所以再取一次名字</p>
+<p>​                        select name from (select name,count(*) as gk from stu having gk &gt;=2) as t;</p>
+<p>​                        #找出这些同学了，那么再计算他们的平均分</p>
+<p>​                        select name,avg(score) from stu where name in (select name from (select name,count(*) as gk from stu having gk &gt;=2) as t) group by name;</p>
+<p>​        <strong>3、exists型子查询</strong></p>
+<p>​                <strong>（把外层查询结果拿到内层，看内层的查询是否成立）</strong></p>
+<p>​                #查询哪些栏目下有商品，栏目表category,商品表goods</p>
+<p>​                    select cat_id,cat_name from category where exists(select * from goods where goods.cat_id = category.cat_id);</p>
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT of_dpt, COUNT(proj_name) AS count_project FROM project WHERE of_dpt IN (SELECT in_dpt FROM employee WHERE name=&apos;Tom&apos;)</div></pre></td></tr></table></figure>
+<h4 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h4><p> 分左连接，右连接，内连接</p>
+<p>1 左连接</p>
+<p>以左表为准，去右表找数据，如果没有匹配的数据，则以null补空位，所以输出结果数=左表原数据数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select goods_id,goods_name,goods.cat_id,cat_name,shop_price from goods left join category on goods.cat_id = category.cat_id order by  shop_price desc limit 5;</div></pre></td></tr></table></figure>
+<p>2 内连接</p>
+<p>查询结果是左右连接的<strong>交集</strong>，【即左右连接的结果去除null项后的并集（去除了重复项）】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select n1,n2,n3 from ta inner join tb on ta.n1= ta.n2</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/21/子查询/">展开全文 >></a>
         </p>
       
 

@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.ying14.top">
-  <title>Hello World | Dearest</title>
+  <title>mysql-subquery | Dearest</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="子查询定义在一个表达中可以调用另一个表达式，这个被调用的表达式叫做子查询（subquery），也称作子选择（subselect）或内嵌选择（inner select）。子查询的结果传递给调用它的表表达式继续处理。  1、where型子查询 ​                （把内层查询结果当作外层查询的比较条件） ​                #不用order by 来查询最新的商品 ​">
+<meta name="keywords" content="学习笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://www.ying14.top/2017/05/30/hello-world/index.html">
+<meta property="og:title" content="mysql-subquery">
+<meta property="og:url" content="http://www.ying14.top/2017/06/21/子查询/index.html">
 <meta property="og:site_name" content="Dearest">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta property="og:updated_time" content="2017-05-29T17:57:57.417Z">
+<meta property="og:description" content="子查询定义在一个表达中可以调用另一个表达式，这个被调用的表达式叫做子查询（subquery），也称作子选择（subselect）或内嵌选择（inner select）。子查询的结果传递给调用它的表表达式继续处理。  1、where型子查询 ​                （把内层查询结果当作外层查询的比较条件） ​                #不用order by 来查询最新的商品 ​">
+<meta property="og:updated_time" content="2017-06-22T09:07:02.293Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="mysql-subquery">
+<meta name="twitter:description" content="子查询定义在一个表达中可以调用另一个表达式，这个被调用的表达式叫做子查询（subquery），也称作子选择（subselect）或内嵌选择（inner select）。子查询的结果传递给调用它的表表达式继续处理。  1、where型子查询 ​                （把内层查询结果当作外层查询的比较条件） ​                #不用order by 来查询最新的商品 ​">
   
     <link rel="alternative" href="/atom.xml" title="Dearest" type="application/atom+xml">
   
@@ -157,35 +158,55 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-子查询" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      mysql-subquery
     </h1>
   
 
         
-        <a href="/2017/05/30/hello-world/" class="archive-article-date">
-  	<time datetime="2017-05-29T17:57:57.417Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-30</time>
+        <a href="/2017/06/21/子查询/" class="archive-article-date">
+  	<time datetime="2017-06-21T06:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h2 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h2><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>在一个表达中可以调用另一个表达式，这个被调用的表达式叫做子查询（subquery），也称作子选择（subselect）或内嵌选择（inner select）。子查询的结果传递给调用它的表表达式继续处理。</p>
+<p> <strong>1、where型子查询</strong></p>
+<p>​                <strong>（把内层查询结果当作外层查询的比较条件）</strong></p>
+<p>​                #不用order by 来查询最新的商品</p>
+<p>​                select goods_id,goods_name from goods where goods_id = (select max(goods_id) from goods);</p>
+<p>​                #取出每个栏目下最新的产品(goods_id唯一)</p>
+<p>​                select cat_id,goods_id,goods_name from goods where goods_id in(select max(goods_id) from goods group by cat_id);</p>
+<p>​        <strong>2、from型子查询</strong></p>
+<p>​                <strong>(把内层的查询结果供外层再次查询)</strong></p>
+<p>​                #用子查询查出挂科两门及以上的同学的平均成绩</p>
+<p>​                    思路：</p>
+<p>​                        #先查出哪些同学挂科两门以上</p>
+<p>​                        select name,count(*) as gk from stu where score &lt; 60 having gk &gt;=2;</p>
+<p>​                        #以上查询结果，我们只要名字就可以了，所以再取一次名字</p>
+<p>​                        select name from (select name,count(*) as gk from stu having gk &gt;=2) as t;</p>
+<p>​                        #找出这些同学了，那么再计算他们的平均分</p>
+<p>​                        select name,avg(score) from stu where name in (select name from (select name,count(*) as gk from stu having gk &gt;=2) as t) group by name;</p>
+<p>​        <strong>3、exists型子查询</strong></p>
+<p>​                <strong>（把外层查询结果拿到内层，看内层的查询是否成立）</strong></p>
+<p>​                #查询哪些栏目下有商品，栏目表category,商品表goods</p>
+<p>​                    select cat_id,cat_name from category where exists(select * from goods where goods.cat_id = category.cat_id);</p>
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT of_dpt, COUNT(proj_name) AS count_project FROM project WHERE of_dpt IN (SELECT in_dpt FROM employee WHERE name=&apos;Tom&apos;)</div></pre></td></tr></table></figure>
+<h4 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h4><p> 分左连接，右连接，内连接</p>
+<p>1 左连接</p>
+<p>以左表为准，去右表找数据，如果没有匹配的数据，则以null补空位，所以输出结果数=左表原数据数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select goods_id,goods_name,goods.cat_id,cat_name,shop_price from goods left join category on goods.cat_id = category.cat_id order by  shop_price desc limit 5;</div></pre></td></tr></table></figure>
+<p>2 内连接</p>
+<p>查询结果是左右连接的<strong>交集</strong>，【即左右连接的结果去除null项后的并集（去除了重复项）】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select n1,n2,n3 from ta inner join tb on ta.n1= ta.n2</div></pre></td></tr></table></figure>
 
       
 
@@ -215,6 +236,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -265,7 +297,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://www.ying14.top/2017/05/30/hello-world/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.ying14.top/2017/06/21/子查询/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -279,15 +311,20 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/06/21/子查询/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/06/21/python3-circlearea/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          mysql-subquery
+          python3 circlearea
         
       </div>
     </a>
   
+  
+    <a href="/2017/05/30/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
