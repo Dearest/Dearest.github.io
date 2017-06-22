@@ -158,6 +158,78 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Ruby中Include，Extend，Prepand,Load，Require的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/21/Ruby中Include，Extend，Prepand,Load，Require的区别/">Ruby中Include, Extend, Prepend, Load,Require的区别</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/21/Ruby中Include，Extend，Prepand,Load，Require的区别/" class="archive-article-date">
+  	<time datetime="2017-06-21T09:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Ruby中Include-Extend-Prepend-Load-Require的区别"><a href="#Ruby中Include-Extend-Prepend-Load-Require的区别" class="headerlink" title="Ruby中Include, Extend, Prepend, Load,Require的区别"></a>Ruby中Include, Extend, Prepend, Load,Require的区别</h2><h4 id="Include"><a href="#Include" class="headerlink" title="Include"></a>Include</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">Log</span> </span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">class_type</span></span></div><div class="line">    <span class="string">"This class is of type: <span class="subst">#&#123;<span class="keyword">self</span>.<span class="keyword">class</span>&#125;</span>"</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestClass</span> </span></div><div class="line">  <span class="keyword">include</span> Log </div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">tc = TestClass.new.class_type</div><div class="line">puts tc <span class="comment">#This class is of type: TestClass</span></div></pre></td></tr></table></figure>
+<p>如例当你Include一个模块到某个类时, 相当于把模块中定义的方法插入到类中。它允许使用 mixin。它用来 DRY 你的代码, 避免重复。例如, 当你有多个类时, 需要相同的函数时, 可以把函数定义到module中, 进行include。 下例假设模块Log和类TestClass在相同的.rb文件。如果它们存在于多个文件, 则需要使用 load 或 require 导入文件。</p>
+<h4 id="Prepend"><a href="#Prepend" class="headerlink" title="Prepend"></a>Prepend</h4><p>prepend 将模块插入到类的下方。</p>
+<p>从 Method lookup角度来理解include和prepend：</p>
+<ul>
+<li>include 将加入到继承链的<strong>上方</strong></li>
+<li>prepend 将加入到继承链的<strong>下方</strong></li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">After</span></span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example</span></span></div><div class="line">  <span class="keyword">include</span> After</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">Example.ancestors</div><div class="line"><span class="comment"># =&gt; [Example, After, Object, Kernel, BasicObject]</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">Before</span></span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example</span></span></div><div class="line">  prepend Before</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">Example.ancestors</div><div class="line"><span class="comment"># =&gt; [Before, Example, Object, Kernel, BasicObject]</span></div></pre></td></tr></table></figure>
+<h4 id="Extend"><a href="#Extend" class="headerlink" title="Extend"></a>Extend</h4><p>当你使用Extend来替换 Include 的时候, 你会添加模块里的方法为类方法, 而不是实例方法</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">Log</span></span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">class_type</span></span></div><div class="line">    <span class="string">"This class is of type: <span class="subst">#&#123;<span class="keyword">self</span>.<span class="keyword">class</span>&#125;</span>"</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestClass</span></span></div><div class="line">  extend Log</div><div class="line">  <span class="comment"># ...</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">tc = TestClass.class_type</div><div class="line">puts tc  <span class="comment"># This class is of type: TestClass</span></div></pre></td></tr></table></figure>
+<h4 id="Require"><a href="#Require" class="headerlink" title="Require"></a>Require</h4><p>Require 方法允许你载入一个库并且会阻止你加载多次。当你<strong>使用 require 重复加载同一个library时，require方法 将会返回 false</strong>。当你要载入的库在不同的文件时才能使用 require 方法。</p>
+<h4 id="Load"><a href="#Load" class="headerlink" title="Load"></a>Load</h4><p>Load 方法基本和 require 方法功能一致，但它不会跟踪要导入的库是否已被加载。因此当重复使用 load 方法时，也会载入多次。大部分情况你都会使用 require 来代替 load。但当你需要每次都要加载时候你才会使用 load, 例如模块的状态会频繁地变化, 你会使用 load 进行加载，获取最新的状态。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/21/Ruby中Include，Extend，Prepand,Load，Require的区别/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-python3-circlearea" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
