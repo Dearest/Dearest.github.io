@@ -158,6 +158,209 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-子查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h4><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>在一个表达中可以调用另一个表表达式，这个被调用的表达式叫做子查询（subquery），也称作子选择（subselect）或内嵌选择（inner select）。子查询的结果传递给调用它的表表达式继续处理。</p>
+<p> <strong>1、where型子查询</strong></p>
+<p>​                <strong>（把内层查询结果当作外层查询的比较条件）</strong></p>
+<p>​                #不用order by 来查询最新的商品</p>
+<p>​                select goods_id,goods_name from goods where goods_id = (select max(goods_id) from goods);</p>
+<p>​                #取出每个栏目下最新的产品(goods_id唯一)</p>
+<p>​                select cat_id,goods_id,goods_name from goods where goods_id in(select max(goods_id) from goods group by cat_id);</p>
+<p>​        <strong>2、from型子查询</strong></p>
+<p>​                <strong>(把内层的查询结果供外层再次查询)</strong></p>
+<p>​                #用子查询查出挂科两门及以上的同学的平均成绩</p>
+<p>​                    思路：</p>
+<p>​                        #先查出哪些同学挂科两门以上</p>
+<p>​                        select name,count(*) as gk from stu where score &lt; 60 having gk &gt;=2;</p>
+<p>​                        #以上查询结果，我们只要名字就可以了，所以再取一次名字</p>
+<p>​                        select name from (select name,count(*) as gk from stu having gk &gt;=2) as t;</p>
+<p>​                        #找出这些同学了，那么再计算他们的平均分</p>
+<p>​                        select name,avg(score) from stu where name in (select name from (select name,count(*) as gk from stu having gk &gt;=2) as t) group by name;</p>
+<p>​        <strong>3、exists型子查询</strong></p>
+<p>​                <strong>（把外层查询结果拿到内层，看内层的查询是否成立）</strong></p>
+<p>​                #查询哪些栏目下有商品，栏目表category,商品表goods</p>
+<p>​                    select cat_id,cat_name from category where exists(select * from goods where goods.cat_id = category.cat_id);</p>
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT of_dpt, COUNT(proj_name) AS count_project FROM project WHERE of_dpt IN (SELECT in_dpt FROM employee WHERE name=&apos;Tom&apos;)</div></pre></td></tr></table></figure>
+<h4 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h4><p> 分左连接，右连接，内连接</p>
+<p>1 左连接</p>
+<p>以左表为准，去右表找数据，如果没有匹配的数据，则以null补空位，所以输出结果数=左表原数据数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select goods_id,goods_name,goods.cat_id,cat_name,shop_price from goods left join category on goods.cat_id = category.cat_id order by  shop_price desc limit 5;</div></pre></td></tr></table></figure>
+<p>2 内连接</p>
+<p>查询结果是左右连接的<strong>交集</strong>，【即左右连接的结果去除null项后的并集（去除了重复项）】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select n1,n2,n3 from ta inner join tb on ta.n1= ta.n2</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/22/子查询/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-ruby-singleton-method" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/22/ruby-singleton-method/">ruby-singleton-method</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/22/ruby-singleton-method/" class="archive-article-date">
+  	<time datetime="2017-06-22T08:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Ruby单例方法的定义方式"><a href="#Ruby单例方法的定义方式" class="headerlink" title="Ruby单例方法的定义方式"></a>Ruby单例方法的定义方式</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 1</span></div><div class="line">Class A </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">hi</span></span></div><div class="line">    p <span class="string">'hi'</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="comment"># 2</span></div><div class="line">Class A</div><div class="line">  <span class="class"><span class="keyword">class</span> &lt;&lt; self</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hello</span></span></div><div class="line">      p <span class="string">'hello'</span></div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="comment"># 3</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">A</span>.<span class="title">hey</span></span></div><div class="line">  p <span class="string">'hey'</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="comment"># 4</span></div><div class="line">(<span class="class"><span class="keyword">class</span> &lt;&lt; A;</span> <span class="keyword">self</span>; <span class="keyword">end</span>).class_eval <span class="keyword">do</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">you</span></span></div><div class="line">    p <span class="string">'you'</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 5</span></div><div class="line">A.singleton_class.class_eval <span class="keyword">do</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">folk</span></span></div><div class="line">    p <span class="string">'folk'</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="comment"># 其中1,2 3相似的</span></div><div class="line"><span class="comment"># 4，5都是拿到class的实例然后打开这个类往里面添加类方法</span></div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/22/ruby-singleton-method/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-new-ubuntu-system-config" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/22/new-ubuntu-system-config/">new ubuntu system config</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/22/new-ubuntu-system-config/" class="archive-article-date">
+  	<time datetime="2017-06-22T07:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="新装的ubuntu系统配置开发环境的全流程"><a href="#新装的ubuntu系统配置开发环境的全流程" class="headerlink" title="新装的ubuntu系统配置开发环境的全流程"></a>新装的ubuntu系统配置开发环境的全流程</h1><h4 id="安装更新"><a href="#安装更新" class="headerlink" title="安装更新"></a>安装更新</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get upgrade</div></pre></td></tr></table></figure>
+<h4 id="安装oh-zsh"><a href="#安装oh-zsh" class="headerlink" title="安装oh-zsh"></a>安装oh-zsh</h4><ol>
+<li><p>安装zsh</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install zsh</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装Git</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install git</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装Oh My Zsh</p>
+<p>via curl</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>"</span></div></pre></td></tr></table></figure>
+<p>via wget</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sh -c <span class="string">"<span class="variable">$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)</span>"</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>​        修改zsh主题为 ys</p>
+<ol>
+<li><p>安装ruby and rails</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3</div><div class="line">curl <span class="_">-s</span>SL https://get.rvm.io | bash <span class="_">-s</span> stable</div><div class="line"><span class="built_in">source</span> ~/.rvm/scripts/rvm</div><div class="line"><span class="built_in">echo</span> <span class="string">"ruby_url=https://cache.ruby-china.org/pub/ruby"</span> &gt; ~/.rvm/user/db</div><div class="line">rvm requirements</div><div class="line">rvm install 2.3.1</div><div class="line">rvm use 2.3.1 --default</div><div class="line">gem install bundler</div><div class="line">gem install rails</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装MySQL</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install mysql-server</div><div class="line">sudo apt-get install mysql-client</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">后端技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/22/new-ubuntu-system-config/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-Ruby中Include，Extend，Prepand,Load，Require的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -439,6 +642,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">后端技术</a>
               </li>
             
             <div class="clearfix"></div>
