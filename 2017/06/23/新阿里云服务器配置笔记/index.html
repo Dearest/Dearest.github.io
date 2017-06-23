@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.ying14.top">
-  <title>new ubuntu system config | Dearest</title>
+  <title>新阿里云服务器配置笔记 | Dearest</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="新装的ubuntu系统配置开发环境的全流程安装更新12sudo apt-get updatesudo apt-get upgrade 安装oh-zsh 安装zsh 1sudo apt-get install zsh  安装Git 1sudo apt-get install git  安装Oh My Zsh via curl 1sh -c &quot;$(curl -fsSL https://raw.gith">
+  <meta name="description" content="阿里云服务器配置笔记 更换合适的镜像  修改ssh默认端口，并添加新的ssh端口到安全组规则 123sudo vi /etc/ssh/sshd_config# 修改port 22 为 port 端口号sudo /etc/init.d/ssh restart  新建一个用户，避免使用root用户登录服务器 12sudo adduser zhousudo usermod -G sudo zhou  安">
 <meta name="keywords" content="后端技术">
 <meta property="og:type" content="article">
-<meta property="og:title" content="new ubuntu system config">
-<meta property="og:url" content="http://www.ying14.top/2017/06/22/new-ubuntu-system-config/index.html">
+<meta property="og:title" content="新阿里云服务器配置笔记">
+<meta property="og:url" content="http://www.ying14.top/2017/06/23/新阿里云服务器配置笔记/index.html">
 <meta property="og:site_name" content="Dearest">
-<meta property="og:description" content="新装的ubuntu系统配置开发环境的全流程安装更新12sudo apt-get updatesudo apt-get upgrade 安装oh-zsh 安装zsh 1sudo apt-get install zsh  安装Git 1sudo apt-get install git  安装Oh My Zsh via curl 1sh -c &quot;$(curl -fsSL https://raw.gith">
-<meta property="og:updated_time" content="2017-06-22T07:30:37.327Z">
+<meta property="og:description" content="阿里云服务器配置笔记 更换合适的镜像  修改ssh默认端口，并添加新的ssh端口到安全组规则 123sudo vi /etc/ssh/sshd_config# 修改port 22 为 port 端口号sudo /etc/init.d/ssh restart  新建一个用户，避免使用root用户登录服务器 12sudo adduser zhousudo usermod -G sudo zhou  安">
+<meta property="og:updated_time" content="2017-06-23T09:03:10.623Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="new ubuntu system config">
-<meta name="twitter:description" content="新装的ubuntu系统配置开发环境的全流程安装更新12sudo apt-get updatesudo apt-get upgrade 安装oh-zsh 安装zsh 1sudo apt-get install zsh  安装Git 1sudo apt-get install git  安装Oh My Zsh via curl 1sh -c &quot;$(curl -fsSL https://raw.gith">
+<meta name="twitter:title" content="新阿里云服务器配置笔记">
+<meta name="twitter:description" content="阿里云服务器配置笔记 更换合适的镜像  修改ssh默认端口，并添加新的ssh端口到安全组规则 123sudo vi /etc/ssh/sshd_config# 修改port 22 为 port 端口号sudo /etc/init.d/ssh restart  新建一个用户，避免使用root用户登录服务器 12sudo adduser zhousudo usermod -G sudo zhou  安">
   
     <link rel="alternative" href="/atom.xml" title="Dearest" type="application/atom+xml">
   
@@ -158,48 +158,37 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-new-ubuntu-system-config" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-新阿里云服务器配置笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      new ubuntu system config
+      新阿里云服务器配置笔记
     </h1>
   
 
         
-        <a href="/2017/06/22/new-ubuntu-system-config/" class="archive-article-date">
-  	<time datetime="2017-06-22T07:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-22</time>
+        <a href="/2017/06/23/新阿里云服务器配置笔记/" class="archive-article-date">
+  	<time datetime="2017-06-23T08:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="新装的ubuntu系统配置开发环境的全流程"><a href="#新装的ubuntu系统配置开发环境的全流程" class="headerlink" title="新装的ubuntu系统配置开发环境的全流程"></a>新装的ubuntu系统配置开发环境的全流程</h1><h4 id="安装更新"><a href="#安装更新" class="headerlink" title="安装更新"></a>安装更新</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get upgrade</div></pre></td></tr></table></figure>
-<h4 id="安装oh-zsh"><a href="#安装oh-zsh" class="headerlink" title="安装oh-zsh"></a>安装oh-zsh</h4><ol>
-<li><p>安装zsh</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install zsh</div></pre></td></tr></table></figure>
+        <h2 id="阿里云服务器配置笔记"><a href="#阿里云服务器配置笔记" class="headerlink" title="阿里云服务器配置笔记"></a>阿里云服务器配置笔记</h2><ol>
+<li><p>更换合适的镜像</p>
 </li>
-<li><p>安装Git</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install git</div></pre></td></tr></table></figure>
+<li><p>修改ssh默认端口，并添加新的ssh端口到安全组规则</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/ssh/sshd_config</div><div class="line"><span class="comment"># 修改port 22 为 port 端口号</span></div><div class="line">sudo /etc/init.d/ssh restart</div></pre></td></tr></table></figure>
 </li>
-<li><p>安装Oh My Zsh</p>
-<p>via curl</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>"</span></div></pre></td></tr></table></figure>
-<p>via wget</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sh -c <span class="string">"<span class="variable">$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)</span>"</span></div></pre></td></tr></table></figure>
+<li><p>新建一个用户，避免使用root用户登录服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo adduser zhou</div><div class="line">sudo usermod -G sudo zhou</div></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>​        修改zsh主题为 ys</p>
-<ol>
-<li><p>安装ruby and rails</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3</div><div class="line">curl <span class="_">-s</span>SL https://get.rvm.io | bash <span class="_">-s</span> stable</div><div class="line"><span class="built_in">source</span> ~/.rvm/scripts/rvm</div><div class="line"><span class="built_in">echo</span> <span class="string">"ruby_url=https://cache.ruby-china.org/pub/ruby"</span> &gt; ~/.rvm/user/db</div><div class="line">rvm requirements</div><div class="line">rvm install 2.3.1</div><div class="line">rvm use 2.3.1 --default</div><div class="line">gem install bundler</div><div class="line">gem install rails</div></pre></td></tr></table></figure>
-</li>
-<li><p>安装MySQL</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install mysql-server</div><div class="line">sudo apt-get install mysql-client</div></pre></td></tr></table></figure>
+<li><p>安装docker</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl <span class="_">-s</span>SL https://get.daocloud.io/docker | sh</div></pre></td></tr></table></figure>
 <p>​</p>
 </li>
 </ol>
@@ -293,7 +282,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://www.ying14.top/2017/06/22/new-ubuntu-system-config/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.ying14.top/2017/06/23/新阿里云服务器配置笔记/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -307,18 +296,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/06/22/ruby-singleton-method/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          ruby-singleton-method
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/06/21/python3-circlearea/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">python3 circlearea</div>
+    <a href="/2017/06/23/Python的数据结构/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python的数据结构</div>
       <i class="icon-circle-right"></i>
     </a>
   
