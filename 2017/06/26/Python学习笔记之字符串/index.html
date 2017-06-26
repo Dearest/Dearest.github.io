@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.ying14.top">
-  <title>mysql-subquery | Dearest</title>
+  <title>Python学习笔记之字符串 | Dearest</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="子查询定义在一个表达中可以调用另一个表达式，这个被调用的表达式叫做子查询（subquery），也称作子选择（subselect）或内嵌选择（inner select）。子查询的结果传递给调用它的表表达式继续处理。  1、where型子查询 ​                （把内层查询结果当作外层查询的比较条件） ​                #不用order by 来查询最新的商品 ​">
+  <meta name="description" content="字符串的方法及跟Ruby的对比title()123&amp;gt;&amp;gt;&amp;gt; s = &quot;shi yan lou&quot;&amp;gt;&amp;gt;&amp;gt; s.title()&apos;Shi Yan Lou&apos; title()的作用是讲字符串里单词首字母大写,其余字母小写.Ruby里相同的方法为capitalize 123&quot;hello&quot;.capitalize    #=&amp;gt; &quot;Hello&quot;&quot;HELLO&quot;.capitaliz">
 <meta name="keywords" content="学习笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mysql-subquery">
-<meta property="og:url" content="http://www.ying14.top/2017/06/21/子查询/index.html">
+<meta property="og:title" content="Python学习笔记之字符串">
+<meta property="og:url" content="http://www.ying14.top/2017/06/26/Python学习笔记之字符串/index.html">
 <meta property="og:site_name" content="Dearest">
-<meta property="og:description" content="子查询定义在一个表达中可以调用另一个表达式，这个被调用的表达式叫做子查询（subquery），也称作子选择（subselect）或内嵌选择（inner select）。子查询的结果传递给调用它的表表达式继续处理。  1、where型子查询 ​                （把内层查询结果当作外层查询的比较条件） ​                #不用order by 来查询最新的商品 ​">
-<meta property="og:updated_time" content="2017-06-22T09:07:02.293Z">
+<meta property="og:description" content="字符串的方法及跟Ruby的对比title()123&amp;gt;&amp;gt;&amp;gt; s = &quot;shi yan lou&quot;&amp;gt;&amp;gt;&amp;gt; s.title()&apos;Shi Yan Lou&apos; title()的作用是讲字符串里单词首字母大写,其余字母小写.Ruby里相同的方法为capitalize 123&quot;hello&quot;.capitalize    #=&amp;gt; &quot;Hello&quot;&quot;HELLO&quot;.capitaliz">
+<meta property="og:updated_time" content="2017-06-26T06:03:26.754Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mysql-subquery">
-<meta name="twitter:description" content="子查询定义在一个表达中可以调用另一个表达式，这个被调用的表达式叫做子查询（subquery），也称作子选择（subselect）或内嵌选择（inner select）。子查询的结果传递给调用它的表表达式继续处理。  1、where型子查询 ​                （把内层查询结果当作外层查询的比较条件） ​                #不用order by 来查询最新的商品 ​">
+<meta name="twitter:title" content="Python学习笔记之字符串">
+<meta name="twitter:description" content="字符串的方法及跟Ruby的对比title()123&amp;gt;&amp;gt;&amp;gt; s = &quot;shi yan lou&quot;&amp;gt;&amp;gt;&amp;gt; s.title()&apos;Shi Yan Lou&apos; title()的作用是讲字符串里单词首字母大写,其余字母小写.Ruby里相同的方法为capitalize 123&quot;hello&quot;.capitalize    #=&amp;gt; &quot;Hello&quot;&quot;HELLO&quot;.capitaliz">
   
     <link rel="alternative" href="/atom.xml" title="Dearest" type="application/atom+xml">
   
@@ -158,55 +158,46 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-子查询" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Python学习笔记之字符串" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      mysql-subquery
+      Python学习笔记之字符串
     </h1>
   
 
         
-        <a href="/2017/06/21/子查询/" class="archive-article-date">
-  	<time datetime="2017-06-21T06:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-21</time>
+        <a href="/2017/06/26/Python学习笔记之字符串/" class="archive-article-date">
+  	<time datetime="2017-06-26T02:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h2><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>在一个表达中可以调用另一个表达式，这个被调用的表达式叫做子查询（subquery），也称作子选择（subselect）或内嵌选择（inner select）。子查询的结果传递给调用它的表表达式继续处理。</p>
-<p> <strong>1、where型子查询</strong></p>
-<p>​                <strong>（把内层查询结果当作外层查询的比较条件）</strong></p>
-<p>​                #不用order by 来查询最新的商品</p>
-<p>​                select goods_id,goods_name from goods where goods_id = (select max(goods_id) from goods);</p>
-<p>​                #取出每个栏目下最新的产品(goods_id唯一)</p>
-<p>​                select cat_id,goods_id,goods_name from goods where goods_id in(select max(goods_id) from goods group by cat_id);</p>
-<p>​        <strong>2、from型子查询</strong></p>
-<p>​                <strong>(把内层的查询结果供外层再次查询)</strong></p>
-<p>​                #用子查询查出挂科两门及以上的同学的平均成绩</p>
-<p>​                    思路：</p>
-<p>​                        #先查出哪些同学挂科两门以上</p>
-<p>​                        select name,count(*) as gk from stu where score &lt; 60 having gk &gt;=2;</p>
-<p>​                        #以上查询结果，我们只要名字就可以了，所以再取一次名字</p>
-<p>​                        select name from (select name,count(*) as gk from stu having gk &gt;=2) as t;</p>
-<p>​                        #找出这些同学了，那么再计算他们的平均分</p>
-<p>​                        select name,avg(score) from stu where name in (select name from (select name,count(*) as gk from stu having gk &gt;=2) as t) group by name;</p>
-<p>​        <strong>3、exists型子查询</strong></p>
-<p>​                <strong>（把外层查询结果拿到内层，看内层的查询是否成立）</strong></p>
-<p>​                #查询哪些栏目下有商品，栏目表category,商品表goods</p>
-<p>​                    select cat_id,cat_name from category where exists(select * from goods where goods.cat_id = category.cat_id);</p>
-<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT of_dpt, COUNT(proj_name) AS count_project FROM project WHERE of_dpt IN (SELECT in_dpt FROM employee WHERE name=&apos;Tom&apos;)</div></pre></td></tr></table></figure>
-<h4 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h4><p> 分左连接，右连接，内连接</p>
-<p>1 左连接</p>
-<p>以左表为准，去右表找数据，如果没有匹配的数据，则以null补空位，所以输出结果数=左表原数据数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select goods_id,goods_name,goods.cat_id,cat_name,shop_price from goods left join category on goods.cat_id = category.cat_id order by  shop_price desc limit 5;</div></pre></td></tr></table></figure>
-<p>2 内连接</p>
-<p>查询结果是左右连接的<strong>交集</strong>，【即左右连接的结果去除null项后的并集（去除了重复项）】</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select n1,n2,n3 from ta inner join tb on ta.n1= ta.n2</div></pre></td></tr></table></figure>
+        <h3 id="字符串的方法及跟Ruby的对比"><a href="#字符串的方法及跟Ruby的对比" class="headerlink" title="字符串的方法及跟Ruby的对比"></a>字符串的方法及跟Ruby的对比</h3><h5 id="title"><a href="#title" class="headerlink" title="title()"></a>title()</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">"shi yan lou"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.title()</div><div class="line"><span class="string">'Shi Yan Lou'</span></div></pre></td></tr></table></figure>
+<p>title()的作用是讲字符串里单词首字母大写,其余字母小写.Ruby里相同的方法为<code>capitalize</code></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"hello"</span>.capitalize    <span class="comment">#=&gt; "Hello"</span></div><div class="line"><span class="string">"HELLO"</span>.capitalize    <span class="comment">#=&gt; "Hello"</span></div><div class="line"><span class="string">"123ABC"</span>.capitalize   <span class="comment">#=&gt; "123abc"</span></div></pre></td></tr></table></figure>
+<h5 id="upper-lower"><a href="#upper-lower" class="headerlink" title="upper()  lower()"></a>upper()  lower()</h5><p>方法 <code>upper()</code> 返回字符串全部大写的版本，反之 <code>lower()</code> 返回字符串的全部小写版本。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>z = <span class="string">'shi yan lou'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>z.upper()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>z</div><div class="line"><span class="string">'SHI YAN LOU'</span></div></pre></td></tr></table></figure>
+<p>Ruby里相同方法为<code>upcase</code> 和 <code>downcase</code> ,并且相同的点这些方法都是返回原字符串的副本,并不会修改原字符串.(Ruby可以使用 upcase! downcase! 来修改原字符串)</p>
+<h5 id="swapcase"><a href="#swapcase" class="headerlink" title="swapcase()"></a>swapcase()</h5><p>返回字符串大小写交换的版本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">'I am a pRoGraMMEr'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.swapcase()</div><div class="line"><span class="string">'i AM A PrOgRAmmeR'</span></div></pre></td></tr></table></figure>
+<p>Ruby里也有同名相同作用的方法<code>swapcase</code></p>
+<h5 id="isalnum-isalpha-isdigit-islower-isupper"><a href="#isalnum-isalpha-isdigit-islower-isupper" class="headerlink" title="isalnum()   isalpha()   isdigit() islower()  isupper()"></a>isalnum()   isalpha()   isdigit() islower()  isupper()</h5><p>isalnum()检查所有字符是否为字母和数字</p>
+<p>isalpha()检查所有字符是否为字母</p>
+<p>isdigit()检查所有字符是否为数字</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">'jdw 123123'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.isalnum()</div><div class="line"><span class="keyword">False</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">'jdw123123'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.isalnum()</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">"1234"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.isdigit() <span class="comment"># 检查字符串是否所有字符为数字</span></div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">"ShiYanLou is coming"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.islower() <span class="comment"># 检查字符串是否所有字符为小写</span></div><div class="line"><span class="keyword">False</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">"Shiyanlou Is Coming"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.istitle() <span class="comment"># To 检查字符串是否为标题样式</span></div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">"CHINA"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.isupper() <span class="comment"># 检查字符串是否所有字符为大写</span></div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure>
+<h4 id="测验"><a href="#测验" class="headerlink" title="测验"></a>测验</h4><h5 id="回文检查"><a href="#回文检查" class="headerlink" title="回文检查"></a>回文检查</h5><p>检查用户的输入是否为回文,并输出结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line">s = input(<span class="string">"Please enter a string: "</span>)</div><div class="line">z = s[::<span class="number">-1</span>]</div><div class="line"><span class="keyword">if</span> s == z:</div><div class="line">    print(<span class="string">"The string is a palindrome"</span>)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    print(<span class="string">"The string is not a palindrome"</span>)</div></pre></td></tr></table></figure>
+<p>s[::-1]的作用是翻转字符串, Ruby里实现是 s.reverse</p>
+<blockquote>
+<p>TODO: 去了解字符串截断 [::]的用法</p>
+</blockquote>
+<p><a href="http://www.runoob.com/python/python-strings.html" target="_blank" rel="external">参考文档</a></p>
 
       
 
@@ -297,7 +288,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://www.ying14.top/2017/06/21/子查询/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.ying14.top/2017/06/26/Python学习笔记之字符串/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -311,18 +302,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/06/21/python3-circlearea/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          python3 circlearea
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/05/30/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2017/06/23/新阿里云服务器配置笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">新阿里云服务器配置笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
