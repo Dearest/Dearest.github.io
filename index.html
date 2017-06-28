@@ -158,6 +158,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ruby基础算法-冒泡排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/28/ruby基础算法-冒泡排序/">基础算法-冒泡排序</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/28/ruby基础算法-冒泡排序/" class="archive-article-date">
+  	<time datetime="2017-06-28T05:44:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="ruby实现"><a href="#ruby实现" class="headerlink" title="ruby实现"></a>ruby实现</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">array = [<span class="number">9</span> , <span class="number">8</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>]   <span class="comment"># 待排序数组</span></div><div class="line">f = <span class="number">1</span></div><div class="line"><span class="keyword">while</span> f &lt; array.length</div><div class="line">  (<span class="number">0</span>...(array.length - f)).to_a.each <span class="keyword">do</span> <span class="params">|i|</span>      <span class="comment"># 注意循环次数</span></div><div class="line">    puts <span class="string">"f = <span class="subst">#&#123;f&#125;</span> i = <span class="subst">#&#123;i&#125;</span>"</span></div><div class="line">    array[i], array[i+<span class="number">1</span>] = array[i+<span class="number">1</span>], array[i] <span class="keyword">if</span> array[i] &gt; array[i+<span class="number">1</span>]</div><div class="line">    puts <span class="string">"now array: <span class="subst">#&#123;array&#125;</span>"</span></div><div class="line">  <span class="keyword">end</span></div><div class="line">  f += <span class="number">1</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">puts <span class="string">"result: <span class="subst">#&#123;array&#125;</span>"</span></div></pre></td></tr></table></figure>
+<h3 id="python实现"><a href="#python实现" class="headerlink" title="python实现"></a>python实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">list = [<span class="number">9</span> , <span class="number">8</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>]</div><div class="line">f = <span class="number">1</span></div><div class="line">length = len(list)</div><div class="line"><span class="keyword">while</span> f &lt; length:</div><div class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, length - f):</div><div class="line">		print(<span class="string">"f = &#123;&#125;, i = &#123;&#125;"</span>.format(f, i))</div><div class="line">		<span class="keyword">if</span> list[i] &gt; list[i+<span class="number">1</span>]:</div><div class="line">			list[i], list[i+<span class="number">1</span>] = list[i+<span class="number">1</span>], list[i]</div><div class="line">	f += <span class="number">1</span></div><div class="line">print(list)</div></pre></td></tr></table></figure>
+<p>这里将待排序数组设置为从大到小的顺序,排序之后的顺序是从小到大.则会达到最大的时间复杂度.</p>
+<p>冒泡排序算法的时间复杂度为O(N^2)</p>
+<blockquote>
+<p>之后的算法部分的代码都会使用最简单的语句来表现,尽量不使用该编程语言在该算法下的语法糖</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">后端技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/28/ruby基础算法-冒泡排序/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-Python学习笔记之字符串" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
