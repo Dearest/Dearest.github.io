@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.ying14.top">
-  <title>新阿里云服务器配置笔记 | Dearest</title>
+  <title>python多版本管理工具pyenv的使用方法 | Dearest</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="阿里云服务器配置笔记 更换合适的镜像  修改ssh默认端口，并添加新的ssh端口到安全组规则 123sudo vi /etc/ssh/sshd_config# 修改port 22 为 port 端口号sudo /etc/init.d/ssh restart  新建一个用户，避免使用root用户登录服务器 12sudo adduser zhousudo usermod -G sudo zhou  安">
-<meta name="keywords" content="后端技术">
+  <meta name="description" content="pyenv: Simple Python version management pyenv lets you easily switch between multiple versions of Python. It’s simple, unobtrusive, and follows the UNIX tradition of single-purpose tools that do one t">
+<meta name="keywords" content="学习笔记,Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="新阿里云服务器配置笔记">
-<meta property="og:url" content="http://www.ying14.top/2017/06/23/新阿里云服务器配置笔记/index.html">
+<meta property="og:title" content="python多版本管理工具pyenv的使用方法">
+<meta property="og:url" content="http://www.ying14.top/2017/07/07/python多版本管理工具pyenv的使用方法/index.html">
 <meta property="og:site_name" content="Dearest">
-<meta property="og:description" content="阿里云服务器配置笔记 更换合适的镜像  修改ssh默认端口，并添加新的ssh端口到安全组规则 123sudo vi /etc/ssh/sshd_config# 修改port 22 为 port 端口号sudo /etc/init.d/ssh restart  新建一个用户，避免使用root用户登录服务器 12sudo adduser zhousudo usermod -G sudo zhou  安">
-<meta property="og:updated_time" content="2017-06-23T09:03:10.623Z">
+<meta property="og:description" content="pyenv: Simple Python version management pyenv lets you easily switch between multiple versions of Python. It’s simple, unobtrusive, and follows the UNIX tradition of single-purpose tools that do one t">
+<meta property="og:updated_time" content="2017-07-07T06:12:28.596Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="新阿里云服务器配置笔记">
-<meta name="twitter:description" content="阿里云服务器配置笔记 更换合适的镜像  修改ssh默认端口，并添加新的ssh端口到安全组规则 123sudo vi /etc/ssh/sshd_config# 修改port 22 为 port 端口号sudo /etc/init.d/ssh restart  新建一个用户，避免使用root用户登录服务器 12sudo adduser zhousudo usermod -G sudo zhou  安">
+<meta name="twitter:title" content="python多版本管理工具pyenv的使用方法">
+<meta name="twitter:description" content="pyenv: Simple Python version management pyenv lets you easily switch between multiple versions of Python. It’s simple, unobtrusive, and follows the UNIX tradition of single-purpose tools that do one t">
   
     <link rel="alternative" href="/atom.xml" title="Dearest" type="application/atom+xml">
   
@@ -158,40 +158,49 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-新阿里云服务器配置笔记" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-python多版本管理工具pyenv的使用方法" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      新阿里云服务器配置笔记
+      python多版本管理工具pyenv的使用方法
     </h1>
   
 
         
-        <a href="/2017/06/23/新阿里云服务器配置笔记/" class="archive-article-date">
-  	<time datetime="2017-06-23T08:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-23</time>
+        <a href="/2017/07/07/python多版本管理工具pyenv的使用方法/" class="archive-article-date">
+  	<time datetime="2017-07-07T05:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="阿里云服务器配置笔记"><a href="#阿里云服务器配置笔记" class="headerlink" title="阿里云服务器配置笔记"></a>阿里云服务器配置笔记</h2><ol>
-<li><p>更换合适的镜像</p>
-</li>
-<li><p>修改ssh默认端口，并添加新的ssh端口到安全组规则</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/ssh/sshd_config</div><div class="line"><span class="comment"># 修改port 22 为 port 端口号</span></div><div class="line">sudo /etc/init.d/ssh restart</div></pre></td></tr></table></figure>
-</li>
-<li><p>新建一个用户，避免使用root用户登录服务器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo adduser zhou</div><div class="line">sudo usermod -G sudo zhou</div></pre></td></tr></table></figure>
-</li>
-<li><p>安装docker</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl <span class="_">-s</span>SL https://get.daocloud.io/docker | sh</div></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-</ol>
+        <h3 id="pyenv-Simple-Python-version-management"><a href="#pyenv-Simple-Python-version-management" class="headerlink" title="pyenv: Simple Python version management"></a><strong>pyenv</strong>: Simple Python version management</h3><blockquote>
+<p>pyenv lets you easily switch between multiple versions of Python. It’s simple, unobtrusive, and follows the UNIX tradition of single-purpose tools that do one thing well.</p>
+<p>This project was forked from <a href="https://github.com/rbenv/rbenv" target="_blank" rel="external">rbenv</a> and <a href="https://github.com/rbenv/ruby-build" target="_blank" rel="external">ruby-build</a>, and modified for Python.</p>
+<p>​                                                                                                                                            — form <a href="https://github.com/pyenv/pyenv" target="_blank" rel="external">pyenv-github</a></p>
+</blockquote>
+<p>从pyenv在GitHub上的介绍可以看出pyenv是类似ruby里rbenv的多版本管理工具,简单的说就是可以在系统里安装多个版本的Python并能够快速的切换</p>
+<h3 id="安装方式"><a href="#安装方式" class="headerlink" title="安装方式"></a>安装方式</h3><h5 id="for-mac"><a href="#for-mac" class="headerlink" title="for mac"></a>for mac</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ brew update</div><div class="line">$ brew install pyenv</div></pre></td></tr></table></figure>
+<h5 id="for-ubuntu"><a href="#for-ubuntu" class="headerlink" title="for ubuntu"></a>for ubuntu</h5><p>方法一:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash</div><div class="line"><span class="comment">## update</span></div><div class="line">$ pyenv update</div><div class="line"><span class="comment"># uninstall</span></div><div class="line">$ rm -fr ~/.pyenv</div></pre></td></tr></table></figure>
+<p>方法二:(for use zsh)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/pyenv/pyenv.git ~/.pyenv</div><div class="line"><span class="comment"># than</span></div><div class="line">$ <span class="built_in">echo</span> <span class="string">'export PYENV_ROOT="$HOME/.pyenv"'</span> &gt;&gt; ~/.zshenv</div><div class="line">$ <span class="built_in">echo</span> <span class="string">'export PATH="$PYENV_ROOT/bin:$PATH"'</span> &gt;&gt; ~/.zshenv</div><div class="line"><span class="variable">$echo</span> <span class="string">'eval "$(pyenv init -)"'</span> &gt;&gt; ~/.zshenv</div><div class="line"><span class="variable">$exec</span> <span class="variable">$SHELL</span></div></pre></td></tr></table></figure>
+<h5 id="for-windows"><a href="#for-windows" class="headerlink" title="for windows"></a>for windows</h5><blockquote>
+<p>Are you Kidding?</p>
+</blockquote>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h5 id="查看可安装版本"><a href="#查看可安装版本" class="headerlink" title="查看可安装版本"></a>查看可安装版本</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pyenv install --list</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pyenv install 3.4.6</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pyenv global 3.4.6</div></pre></td></tr></table></figure>
+<p>ps: 在编译 Python 过程中会依赖一些其他库文件，因而需要首先安装这些库文件，已知的一些需要预先安装的库如下</p>
+<p>在 Ubuntu下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install make build-essential libssl-dev zlib1g-dev</div><div class="line">sudo apt-get install libbz2-dev libreadline-dev libsqlite3-dev wget curl</div><div class="line">sudo apt-get install llvm libncurses5-dev libncursesw5-dev</div></pre></td></tr></table></figure>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><a href="https://github.com/pyenv/pyenv" target="_blank" rel="external">pyenv-github</a></p>
+<p><a href="https://github.com/pyenv/pyenv-installer" target="_blank" rel="external">pyenv-installer</a></p>
+<p><a href="http://seisman.info/python-pyenv.html" target="_blank" rel="external">Python 多版本共存之 pyenv</a></p>
 
       
 
@@ -226,7 +235,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">后端技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">学习笔记,Python</a>
         		</li>
       		
 		</ul>
@@ -282,7 +291,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://www.ying14.top/2017/06/23/新阿里云服务器配置笔记/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.ying14.top/2017/07/07/python多版本管理工具pyenv的使用方法/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -296,18 +305,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/06/26/Python学习笔记之字符串/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/07/07/有趣的Python脚本之thefuck/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Python学习笔记之字符串
+          有趣的Python库之thefuck
         
       </div>
     </a>
   
   
-    <a href="/2017/06/23/Python的数据结构/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Python的数据结构</div>
+    <a href="/2017/07/04/Linux日志管理工具romate在rails里的使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux日志管理工具romate在rails里的使用</div>
       <i class="icon-circle-right"></i>
     </a>
   

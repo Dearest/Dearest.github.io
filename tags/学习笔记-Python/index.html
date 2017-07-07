@@ -6,19 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.ying14.top">
-  <title>新阿里云服务器配置笔记 | Dearest</title>
+  <title>Tag: 学习笔记,Python | Dearest</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="阿里云服务器配置笔记 更换合适的镜像  修改ssh默认端口，并添加新的ssh端口到安全组规则 123sudo vi /etc/ssh/sshd_config# 修改port 22 为 port 端口号sudo /etc/init.d/ssh restart  新建一个用户，避免使用root用户登录服务器 12sudo adduser zhousudo usermod -G sudo zhou  安">
-<meta name="keywords" content="后端技术">
-<meta property="og:type" content="article">
-<meta property="og:title" content="新阿里云服务器配置笔记">
-<meta property="og:url" content="http://www.ying14.top/2017/06/23/新阿里云服务器配置笔记/index.html">
+  <meta name="description" content="ruby，个人博客， ruby on rails, python">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dearest">
+<meta property="og:url" content="http://www.ying14.top/tags/学习笔记-Python/index.html">
 <meta property="og:site_name" content="Dearest">
-<meta property="og:description" content="阿里云服务器配置笔记 更换合适的镜像  修改ssh默认端口，并添加新的ssh端口到安全组规则 123sudo vi /etc/ssh/sshd_config# 修改port 22 为 port 端口号sudo /etc/init.d/ssh restart  新建一个用户，避免使用root用户登录服务器 12sudo adduser zhousudo usermod -G sudo zhou  安">
-<meta property="og:updated_time" content="2017-06-23T09:03:10.623Z">
+<meta property="og:description" content="ruby，个人博客， ruby on rails, python">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="新阿里云服务器配置笔记">
-<meta name="twitter:description" content="阿里云服务器配置笔记 更换合适的镜像  修改ssh默认端口，并添加新的ssh端口到安全组规则 123sudo vi /etc/ssh/sshd_config# 修改port 22 为 port 端口号sudo /etc/init.d/ssh restart  新建一个用户，避免使用root用户登录服务器 12sudo adduser zhousudo usermod -G sudo zhou  安">
+<meta name="twitter:title" content="Dearest">
+<meta name="twitter:description" content="ruby，个人博客， ruby on rails, python">
   
     <link rel="alternative" href="/atom.xml" title="Dearest" type="application/atom+xml">
   
@@ -158,172 +156,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-新阿里云服务器配置笔记" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      新阿里云服务器配置笔记
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/07/07/python多版本管理工具pyenv的使用方法/" class="archive-article-date">
+  	<time datetime="2017-07-07T05:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-07</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/07/07/python多版本管理工具pyenv的使用方法/">python多版本管理工具pyenv的使用方法</a>
     </h1>
   
 
-        
-        <a href="/2017/06/23/新阿里云服务器配置笔记/" class="archive-article-date">
-  	<time datetime="2017-06-23T08:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="阿里云服务器配置笔记"><a href="#阿里云服务器配置笔记" class="headerlink" title="阿里云服务器配置笔记"></a>阿里云服务器配置笔记</h2><ol>
-<li><p>更换合适的镜像</p>
-</li>
-<li><p>修改ssh默认端口，并添加新的ssh端口到安全组规则</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/ssh/sshd_config</div><div class="line"><span class="comment"># 修改port 22 为 port 端口号</span></div><div class="line">sudo /etc/init.d/ssh restart</div></pre></td></tr></table></figure>
-</li>
-<li><p>新建一个用户，避免使用root用户登录服务器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo adduser zhou</div><div class="line">sudo usermod -G sudo zhou</div></pre></td></tr></table></figure>
-</li>
-<li><p>安装docker</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl <span class="_">-s</span>SL https://get.daocloud.io/docker | sh</div></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-</ol>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">后端技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">学习笔记,Python</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://www.ying14.top/2017/06/23/新阿里云服务器配置笔记/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/06/26/Python学习笔记之字符串/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Python学习笔记之字符串
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/06/23/Python的数据结构/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Python的数据结构</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
+    
 
 
           </div>
@@ -346,9 +232,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
