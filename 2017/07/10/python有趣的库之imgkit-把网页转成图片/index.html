@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.ying14.top">
-  <title>新阿里云服务器配置笔记 | Dearest</title>
+  <title>python有趣的库之imgkit 把网页转成图片 | Dearest</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="阿里云服务器配置笔记 更换合适的镜像  修改ssh默认端口，并添加新的ssh端口到安全组规则 123sudo vi /etc/ssh/sshd_config# 修改port 22 为 port 端口号sudo /etc/init.d/ssh restart  新建一个用户，避免使用root用户登录服务器 12sudo adduser zhousudo usermod -G sudo zhou  安">
-<meta name="keywords" content="后端技术">
+  <meta name="description" content="最近在做定时推荐菜谱的时候,想要把菜谱转成图片然后通过微信个人号发送到群聊,这样方便看.最终找个了这个库来实现.  Install1pip install imgkit 1234# Debian/Ubuntu:sudo apt-get install wkhtmltopdf# MacOSxbrew install wkhtmltopdf 安装wkhtmltopdf时推荐使用bash脚本安装 12">
+<meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="新阿里云服务器配置笔记">
-<meta property="og:url" content="http://www.ying14.top/2017/06/23/新阿里云服务器配置笔记/index.html">
+<meta property="og:title" content="python有趣的库之imgkit 把网页转成图片">
+<meta property="og:url" content="http://www.ying14.top/2017/07/10/python有趣的库之imgkit-把网页转成图片/index.html">
 <meta property="og:site_name" content="Dearest">
-<meta property="og:description" content="阿里云服务器配置笔记 更换合适的镜像  修改ssh默认端口，并添加新的ssh端口到安全组规则 123sudo vi /etc/ssh/sshd_config# 修改port 22 为 port 端口号sudo /etc/init.d/ssh restart  新建一个用户，避免使用root用户登录服务器 12sudo adduser zhousudo usermod -G sudo zhou  安">
-<meta property="og:updated_time" content="2017-06-23T09:03:10.623Z">
+<meta property="og:description" content="最近在做定时推荐菜谱的时候,想要把菜谱转成图片然后通过微信个人号发送到群聊,这样方便看.最终找个了这个库来实现.  Install1pip install imgkit 1234# Debian/Ubuntu:sudo apt-get install wkhtmltopdf# MacOSxbrew install wkhtmltopdf 安装wkhtmltopdf时推荐使用bash脚本安装 12">
+<meta property="og:updated_time" content="2017-07-10T03:30:05.838Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="新阿里云服务器配置笔记">
-<meta name="twitter:description" content="阿里云服务器配置笔记 更换合适的镜像  修改ssh默认端口，并添加新的ssh端口到安全组规则 123sudo vi /etc/ssh/sshd_config# 修改port 22 为 port 端口号sudo /etc/init.d/ssh restart  新建一个用户，避免使用root用户登录服务器 12sudo adduser zhousudo usermod -G sudo zhou  安">
+<meta name="twitter:title" content="python有趣的库之imgkit 把网页转成图片">
+<meta name="twitter:description" content="最近在做定时推荐菜谱的时候,想要把菜谱转成图片然后通过微信个人号发送到群聊,这样方便看.最终找个了这个库来实现.  Install1pip install imgkit 1234# Debian/Ubuntu:sudo apt-get install wkhtmltopdf# MacOSxbrew install wkhtmltopdf 安装wkhtmltopdf时推荐使用bash脚本安装 12">
   
     <link rel="alternative" href="/atom.xml" title="Dearest" type="application/atom+xml">
   
@@ -158,40 +158,35 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-新阿里云服务器配置笔记" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-python有趣的库之imgkit-把网页转成图片" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      新阿里云服务器配置笔记
+      python有趣的库之imgkit 把网页转成图片
     </h1>
   
 
         
-        <a href="/2017/06/23/新阿里云服务器配置笔记/" class="archive-article-date">
-  	<time datetime="2017-06-23T08:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-23</time>
+        <a href="/2017/07/10/python有趣的库之imgkit-把网页转成图片/" class="archive-article-date">
+  	<time datetime="2017-07-10T03:19:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="阿里云服务器配置笔记"><a href="#阿里云服务器配置笔记" class="headerlink" title="阿里云服务器配置笔记"></a>阿里云服务器配置笔记</h2><ol>
-<li><p>更换合适的镜像</p>
-</li>
-<li><p>修改ssh默认端口，并添加新的ssh端口到安全组规则</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/ssh/sshd_config</div><div class="line"><span class="comment"># 修改port 22 为 port 端口号</span></div><div class="line">sudo /etc/init.d/ssh restart</div></pre></td></tr></table></figure>
-</li>
-<li><p>新建一个用户，避免使用root用户登录服务器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo adduser zhou</div><div class="line">sudo usermod -G sudo zhou</div></pre></td></tr></table></figure>
-</li>
-<li><p>安装docker</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl <span class="_">-s</span>SL https://get.daocloud.io/docker | sh</div></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-</ol>
+        <blockquote>
+<p>最近在做定时推荐菜谱的时候,想要把菜谱转成图片然后通过微信个人号发送到群聊,这样方便看.最终找个了这个库来实现.</p>
+</blockquote>
+<h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install imgkit</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Debian/Ubuntu:</span></div><div class="line">sudo apt-get install wkhtmltopdf</div><div class="line"><span class="comment"># MacOSx</span></div><div class="line">brew install wkhtmltopdf</div></pre></td></tr></table></figure>
+<p>安装wkhtmltopdf时推荐使用bash脚本安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/usr/bin/env bash</span></div><div class="line"></div><div class="line">sudo apt-get install -y openssl build-essential xorg libssl-dev xvfb</div><div class="line">pip install coverage</div><div class="line">wget https://downloads.wkhtmltopdf.org/0.12/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz</div><div class="line">tar xf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz</div><div class="line"><span class="built_in">cd</span> wkhtmltox</div><div class="line">sudo chown root:root bin/wkhtmltopdf</div><div class="line">sudo cp -r * /usr/</div></pre></td></tr></table></figure>
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> imgkit</div><div class="line"></div><div class="line">imgkit.from_url(<span class="string">'https://www.xiachufang.com/recipe/100018526/printable/'</span>, <span class="string">'out.jpg'</span>)</div></pre></td></tr></table></figure>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><p><a href="https://github.com/jarrekk/imgkit" target="_blank" rel="external">https://github.com/jarrekk/imgkit</a></p>
 
       
 
@@ -226,7 +221,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">后端技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
@@ -282,7 +277,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://www.ying14.top/2017/06/23/新阿里云服务器配置笔记/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.ying14.top/2017/07/10/python有趣的库之imgkit-把网页转成图片/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -296,18 +291,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/06/26/Python学习笔记之字符串/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/07/10/Python学习笔记-函数/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Python学习笔记之字符串
+          Python学习笔记-函数
         
       </div>
     </a>
   
   
-    <a href="/2017/06/23/Python的数据结构/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Python的数据结构</div>
+    <a href="/2017/07/07/一键脚本安装shadowsocks/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">一键脚本安装shadowsocks</div>
       <i class="icon-circle-right"></i>
     </a>
   
