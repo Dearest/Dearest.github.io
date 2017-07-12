@@ -158,6 +158,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-怎么统一捕获来自Controller的异常" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/12/怎么统一捕获来自Controller的异常/">怎么统一捕获来自Controller的异常</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/12/怎么统一捕获来自Controller的异常/" class="archive-article-date">
+  	<time datetime="2017-07-12T02:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ApplicationController</span> &lt; ActionController::Base</span></div><div class="line"></div><div class="line">  rescue_from Exception <span class="keyword">do</span> <span class="params">|exception|</span></div><div class="line">    <span class="keyword">case</span> exception</div><div class="line">    <span class="keyword">when</span> ActiveRecord::RecordNotFound</div><div class="line">      redirect_to not_found_path</div><div class="line">    <span class="keyword">when</span> ActionController::RoutingError</div><div class="line">      redirect_to other_path</div><div class="line">    <span class="keyword">else</span></div><div class="line">      <span class="comment"># ...</span></div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<p>正确方式是在Controller里调用rescue_from来捕获异常</p>
+<h3 id="Doc"><a href="#Doc" class="headerlink" title="Doc"></a>Doc</h3><p><strong>rescue_from</strong>(*klasses, with: nil, &amp;block)</p>
+<hr>
+<p>Rescue exceptions raised in controller actions.</p>
+<p><code>rescue_from</code> receives a series of exception classes or class names, and a trailing <code>:with</code> option with the name of a method or a Proc object to be called to handle them. Alternatively a block can be given.</p>
+<blockquote>
+<p>rescue_from 接受一系列的异常类或者类名,并且后面可以跟上一个包含了方法名或者Proc对象的<code>:with</code>参数来处理它们,当然也可以提供一个block来处理异常</p>
+</blockquote>
+<p>Handlers that take one argument will be called with the exception, so that the exception can be inspected when dealing with it.</p>
+<p>Handlers are inherited. They are searched from right to left, from bottom to top, and up the hierarchy. The handler of the first class for which <code>exception.is_a?(klass)</code> holds true is the one invoked, if any.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class ApplicationController &lt; ActionController::Base</div><div class="line">  rescue_from User::NotAuthorized, with: :deny_access # self defined exception</div><div class="line">  rescue_from ActiveRecord::RecordInvalid, with: :show_errors</div><div class="line"></div><div class="line">  rescue_from &apos;MyAppError::Base&apos; do |exception|</div><div class="line">    render xml: exception, status: 500</div><div class="line">  end</div><div class="line"></div><div class="line">  private</div><div class="line">    def deny_access</div><div class="line">      ...</div><div class="line">    end</div><div class="line"></div><div class="line">    def show_errors(exception)</div><div class="line">      exception.record.new_record? ? ...</div><div class="line">    end</div><div class="line">end</div></pre></td></tr></table></figure>
+<p>Exceptions raised inside exception handlers are not propagated up.</p>
+<h3 id="适用场景分析"><a href="#适用场景分析" class="headerlink" title="适用场景分析"></a>适用场景分析</h3><p>在rails架构使用service层的项目可以使用rescue_from方法捕获从service层里抛出的异常,而不用去判断service层方法的返回值来决定最后render的值,从而让Controller里的index,show等方法更专注于业务逻辑.</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># config/initializers/custom_error.rb</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BaseCustomError</span> &lt; StandardError;</span> <span class="keyword">end</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">JWTEncodeError</span> &lt; BaseCustomError;</span> <span class="keyword">end</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoginFailError</span> &lt; BaseCustomError;</span> <span class="keyword">end</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserNotExistError</span> &lt; BaseCustomError;</span> <span class="keyword">end</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">NoPermissionError</span> &lt; BaseCustomError;</span> <span class="keyword">end</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ForbiddenRequestError</span> &lt; BaseCustomError;</span> <span class="keyword">end</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ResendSmsError</span> &lt; BaseCustomError;</span> <span class="keyword">end</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MobileError</span> &lt; BaseCustomError;</span> <span class="keyword">end</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MoneyError</span> &lt; BaseCustomError;</span> <span class="keyword">end</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserCenterError</span> &lt; BaseCustomError;</span> <span class="keyword">end</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">NotFoundError</span> &lt; BaseCustomError;</span> <span class="keyword">end</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserCenterServiceError</span> &lt; BaseCustomError;</span> <span class="keyword">end</span></div><div class="line"><span class="comment"># 示例代码</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#config/initializers/codes.rb</span></div><div class="line">CODE = YAML.load_file(<span class="string">"<span class="subst">#&#123;Rails.root.to_s&#125;</span>/config/codes.yml"</span>).with_indifferent_access</div></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#config/codes.yml</span></div><div class="line"><span class="attr">wrong_timestamp_error:</span></div><div class="line"><span class="attr">  code:</span> <span class="number">651</span></div><div class="line"><span class="attr">  message:</span> <span class="string">'设备时间错误,请刷新二维码后重试'</span></div><div class="line"><span class="attr">mobile_error:</span></div><div class="line"><span class="attr">  code:</span> <span class="number">900</span></div><div class="line"><span class="attr">  message:</span> <span class="string">'手机号码错误'</span></div><div class="line"><span class="attr">money_error:</span></div><div class="line"><span class="attr">  code:</span> <span class="number">901</span></div><div class="line"><span class="attr">  message:</span> <span class="string">'金额错误'</span></div><div class="line"><span class="attr">user_center_error:</span></div><div class="line"><span class="attr">  code:</span> <span class="number">902</span></div><div class="line"><span class="attr">  message:</span> <span class="string">'充值服务器错误'</span></div><div class="line"><span class="attr">user_center_service_error:</span></div><div class="line"><span class="attr">  code:</span> <span class="number">903</span></div><div class="line"><span class="attr">  message:</span> <span class="string">'查询不到该快递员的信息'</span></div><div class="line"><span class="attr">blacklist_service_error:</span></div><div class="line"><span class="attr">  code:</span> <span class="number">904</span></div><div class="line"><span class="attr">  message:</span> <span class="string">'黑名单服务器异常'</span></div><div class="line"><span class="attr">in_blacklist_error:</span></div><div class="line"><span class="attr">  code:</span> <span class="number">905</span></div><div class="line"><span class="attr">  message:</span> <span class="string">'已经加入黑名单'</span></div><div class="line"><span class="attr">warehouse_not_enough:</span></div></pre></td></tr></table></figure>
+<p>在service层抛出异常后可以在Controller里通过以下方式捕获并处理</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#app/controller/application.rb</span></div><div class="line">rescue_from StandardError <span class="keyword">do</span> <span class="params">|exception|</span></div><div class="line">  render CODE[exception.message.underscore.to_sym]</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<p>或者在调用方法里rescue异常</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">create</span></span></div><div class="line">  <span class="comment"># business codes</span></div><div class="line">  ...</div><div class="line"><span class="keyword">rescue</span> OverLimitError, NetTimeOutError, NotFoundError =&gt; e</div><div class="line">  render_422 CODE[e.message.underscore.to_sym])</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">后端技术,Rails</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/12/怎么统一捕获来自Controller的异常/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-怎么样在Ruby项目里使用bundle" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -829,84 +908,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/06/28/ruby基础算法-冒泡排序/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-Python学习笔记之字符串" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/26/Python学习笔记之字符串/">Python学习笔记之字符串</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/26/Python学习笔记之字符串/" class="archive-article-date">
-  	<time datetime="2017-06-26T02:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="字符串的方法及跟Ruby的对比"><a href="#字符串的方法及跟Ruby的对比" class="headerlink" title="字符串的方法及跟Ruby的对比"></a>字符串的方法及跟Ruby的对比</h3><h5 id="title"><a href="#title" class="headerlink" title="title()"></a>title()</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">"shi yan lou"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.title()</div><div class="line"><span class="string">'Shi Yan Lou'</span></div></pre></td></tr></table></figure>
-<p>title()的作用是讲字符串里单词首字母大写,其余字母小写.Ruby里相同的方法为<code>capitalize</code></p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"hello"</span>.capitalize    <span class="comment">#=&gt; "Hello"</span></div><div class="line"><span class="string">"HELLO"</span>.capitalize    <span class="comment">#=&gt; "Hello"</span></div><div class="line"><span class="string">"123ABC"</span>.capitalize   <span class="comment">#=&gt; "123abc"</span></div></pre></td></tr></table></figure>
-<h5 id="upper-lower"><a href="#upper-lower" class="headerlink" title="upper()  lower()"></a>upper()  lower()</h5><p>方法 <code>upper()</code> 返回字符串全部大写的版本，反之 <code>lower()</code> 返回字符串的全部小写版本。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>z = <span class="string">'shi yan lou'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>z.upper()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>z</div><div class="line"><span class="string">'SHI YAN LOU'</span></div></pre></td></tr></table></figure>
-<p>Ruby里相同方法为<code>upcase</code> 和 <code>downcase</code> ,并且相同的点这些方法都是返回原字符串的副本,并不会修改原字符串.(Ruby可以使用 upcase! downcase! 来修改原字符串)</p>
-<h5 id="swapcase"><a href="#swapcase" class="headerlink" title="swapcase()"></a>swapcase()</h5><p>返回字符串大小写交换的版本</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">'I am a pRoGraMMEr'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.swapcase()</div><div class="line"><span class="string">'i AM A PrOgRAmmeR'</span></div></pre></td></tr></table></figure>
-<p>Ruby里也有同名相同作用的方法<code>swapcase</code></p>
-<h5 id="isalnum-isalpha-isdigit-islower-isupper"><a href="#isalnum-isalpha-isdigit-islower-isupper" class="headerlink" title="isalnum()   isalpha()   isdigit() islower()  isupper()"></a>isalnum()   isalpha()   isdigit() islower()  isupper()</h5><p>isalnum()检查所有字符是否为字母和数字</p>
-<p>isalpha()检查所有字符是否为字母</p>
-<p>isdigit()检查所有字符是否为数字</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">'jdw 123123'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.isalnum()</div><div class="line"><span class="keyword">False</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">'jdw123123'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.isalnum()</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">"1234"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.isdigit() <span class="comment"># 检查字符串是否所有字符为数字</span></div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">"ShiYanLou is coming"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.islower() <span class="comment"># 检查字符串是否所有字符为小写</span></div><div class="line"><span class="keyword">False</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">"Shiyanlou Is Coming"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.istitle() <span class="comment"># To 检查字符串是否为标题样式</span></div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">"CHINA"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.isupper() <span class="comment"># 检查字符串是否所有字符为大写</span></div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure>
-<h4 id="测验"><a href="#测验" class="headerlink" title="测验"></a>测验</h4><h5 id="回文检查"><a href="#回文检查" class="headerlink" title="回文检查"></a>回文检查</h5><p>检查用户的输入是否为回文,并输出结果</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line">s = input(<span class="string">"Please enter a string: "</span>)</div><div class="line">z = s[::<span class="number">-1</span>]</div><div class="line"><span class="keyword">if</span> s == z:</div><div class="line">    print(<span class="string">"The string is a palindrome"</span>)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    print(<span class="string">"The string is not a palindrome"</span>)</div></pre></td></tr></table></figure>
-<p>s[::-1]的作用是翻转字符串, Ruby里实现是 s.reverse</p>
-<blockquote>
-<p>TODO: 去了解字符串截断 [::]的用法</p>
-</blockquote>
-<p><a href="http://www.runoob.com/python/python-strings.html" target="_blank" rel="external">参考文档</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/26/Python学习笔记之字符串/">展开全文 >></a>
         </p>
       
 
